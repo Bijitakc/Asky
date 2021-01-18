@@ -1,0 +1,34 @@
+<!-- chat/templates/chat/index.html -->
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <h1>Teckiy</h1>
+    {% for q in posts %}
+        <h3>{{q.question}}</h3>
+        <i>Asked by {{q.created_by}}</i>
+        {% for a in answers %}
+            {% if a.post.id == q.id %}
+                <h4><span style="color:red">{{a.created_by}}</span>==={{a.answer}}</h4>
+                
+                        <button onclick="roombuild('{{a.id}}')">Chat Now</button>
+                    
+            {% endif %}
+        {% endfor %}
+    <div style="height:30px;background:black;"></div>
+    {% endfor %}
+    <script src="{% static 'reconnecting-websocket.js' %}"></script>
+    <script>
+        function roombuild(roomID){
+           var roomName=(Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
+            window.location.href = "/chat/"+roomName+'?q='+roomID
+            console.log(roomName)
+        }
+
+    </script>
+</body>
+</html>
