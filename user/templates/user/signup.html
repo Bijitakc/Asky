@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        {%if errors.top%}
+        <p style="color: red;">{{errors.top}}</p>
+        {%endif%}
+        {%if errors.password %}
+        <p style="color: red;">{{errors.password}}</p>
+        {%endif%}
+        <label>Username</label>
+        <input name="username" type="text"><br>
+        <label>Email</label>
+        <input name="email" type="email"><br>
+        <label>Password</label>
+        <input name="password1" type="password"><br>
+        <label> Confirm password</label>
+        <input name="password2" type="password"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

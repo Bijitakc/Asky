@@ -8,7 +8,7 @@ from datetime import timedelta
 from itertools import chain
 
 # Create your views here.
-@login_required
+# @login_required
 def index(request):
     posts = Post.objects.filter()
     answer = Answer.objects.filter()
@@ -18,7 +18,7 @@ def index(request):
     return render(request,'chat/index.html',{"rooms":rooms,
     "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms})
 
-@login_required
+# @login_required
 def room(request,room_name):
     try:
         room=Room.objects.filter(title=room_name)[0]
