@@ -2,10 +2,13 @@ from django.shortcuts import render,HttpResponse,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
 from .models import Room,Post,Answer
+from django.contrib.auth import get_user_model
 import json
 import online_users.models
 from datetime import timedelta
 from itertools import chain
+
+User = get_user_model()
 
 # Create your views here.
 # @login_required
@@ -15,9 +18,9 @@ def index(request):
         username=request.POST.get('username')
         answer=request.POST.get('answer')
         p=Post.objects.get(id=post)
-        u=User.objects.get(id=post)
+        u=User.objects.get(username=username)
         print(p)
-        ins=Answer(post=p,answer=answer,created_by=username)
+        ins=Answer(post=p,answer=answer,created_by=u)
         ins.save()
         return redirect('chat:index')
     else:
@@ -73,10 +76,14 @@ def room(request,room_name):
             if a in allusers:
                 on_users.append(a)
         pass
-
-
+    ans=Answer.objects.get(id=room.answer.id)
     return render(request,'chat/chatroom.html',{
+        'answer':ans.answer,
+        'post':ans.post,
         'room_name':room_name,
         'username':mark_safe(json.dumps(request.user.username)),
         'id':id,'on_users':on_users,'allusers':allusers
     })
+
+def chatt(request):
+    return render(request,'chat/chatt.html')

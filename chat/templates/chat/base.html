@@ -10,15 +10,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'chat/css/index.css' %}">
-    <title>Chat Rooms</title>
+
 </head>
-<body>
+<body style="background-color: black;">
     <!-- navbar -->
-   <nav class="navbar navbar-primary bg-primary">
-  <span class="navbar-brand mb-0 h1">Asky</span>
-</nav>
+  <!-- <nav class="navbar navbar-primary bg-primary">
+    <span class="navbar-brand mb-0 h1">Asky</span>
+  </nav> -->
+  {%if request.user.is_authenticated %}
+      <a href="{% url 'user:logoutpage' %}">
+        <button type="button" class="btn btn-primary" style="float: right;margin-left:10px ">
+          Logout
+        </button>
+      </a>
+
+      {%else%}
+    
+
+      <a href="{% url 'user:loginpage' %}">
+        <button type="button" class="btn btn-primary" style="float: right;margin-left:10px ">
+          Login
+        </button>
+      </a>
+      <a href="{% url 'user:signup' %}">
+        <button type="button" class="btn btn-primary" style="float: right;; ">
+          Register
+        </button>
+      </a>
+      {%endif%}
+<div class="whole">
   {% block maincontent %}
   {% endblock %}
+</div>
 
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
