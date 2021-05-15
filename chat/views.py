@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.safestring import mark_safe
-from .models import Room,User,Post,Answer
+from .models import Room,Post,Answer
 import json
 import online_users.models
 from datetime import timedelta
@@ -10,13 +10,24 @@ from itertools import chain
 # Create your views here.
 # @login_required
 def index(request):
-    posts = Post.objects.filter()
-    answer = Answer.objects.filter()
-    usernames=User.objects.only("username")
-    rooms=Room.objects.order_by("created_at")
-    available_rooms = Room.objects.filter()
-    return render(request,'chat/index.html',{"rooms":rooms,
-    "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms})
+    if request.method=="POST":
+        post=request.POST.get('post')
+        username=request.POST.get('username')
+        answer=request.POST.get('answer')
+        p=Post.objects.get(id=post)
+        u=User.objects.get(id=post)
+        print(p)
+        ins=Answer(post=p,answer=answer,created_by=username)
+        ins.save()
+        return redirect('chat:index')
+    else:
+        posts = Post.objects.filter()
+        answer = Answer.objects.filter()
+        usernames=User.objects.only("username")
+        rooms=Room.objects.order_by("created_at")
+        available_rooms = Room.objects.filter()
+        return render(request,'chat/index.html',{"rooms":rooms,
+            "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms})
 
 # @login_required
 def room(request,room_name):

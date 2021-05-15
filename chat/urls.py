@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path,re_path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -8,3 +10,5 @@ urlpatterns = [
     path('<str:room_name>',views.room,name="room")
 ]
 
+if settings.DEBUG: # new
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

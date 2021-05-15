@@ -31,20 +31,21 @@ def signup(request):
             print("it")
             user.save()
             print("is")
-            return redirect('chat:index')
+            return redirect('user:loginpage')
     else:
         return render(request,'user/signup.html')
 
 def loginpage(request):
+    if request.user.is_authenticated:
+        return redirect('chat:index')
     if request.method=="POST":
         errors={}
         username=request.POST.get('username')
-        password=request.POST.get('password')
-        hashed_password=make_password('password')
-        user=authenticate(request,username=username,password=hashed_password)
+        password=request.POST.get('upassword')
+        user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
-            return(request,'chat:index')
+            return redirect('chat:index')
         else:
             errors['top']="Wrong Credentials"
         return render(request,'user/login.html',context={'errors':errors})

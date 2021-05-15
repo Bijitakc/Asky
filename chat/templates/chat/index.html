@@ -1,25 +1,31 @@
 <!-- chat/templates/chat/index.html -->
+{% extends 'chat/base.html'%}
 {%load static%}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Chat Rooms</title>
-</head>
-<body>
-    <h1>Teckiy</h1>
+{% block maincontent %}
+    <h1>Asky</h1>
     {% for q in posts %}
-        <h3>{{q.question}}</h3>
-        <i>Asked by {{q.created_by}}</i>
-        {% for a in answers %}
-            {% if a.post.id == q.id %}
-                <h4><span style="color:red">{{a.created_by}}</span>==={{a.answer}}</h4>
-                
-                        <button onclick="roombuild('{{a.id}}')">Chat Now</button>
-                    
-            {% endif %}
-        {% endfor %}
-    <div style="height:30px;background:black;"></div>
+        <div class="wholecard" >
+            <h3>{{q.question}}</h3>
+            <i style="font-size: 10px;">Asked by {{q.created_by}}</i>
+                {% for a in answers %}
+                <div class="answercard" >
+                    {% if a.post.id == q.id %}
+                        <h4><span style="color:red">{{a.created_by}}</span>:{{a.answer}}</h4>
+                        <button  style="background-color: black;"  onclick="roombuild('{{a.id}}')">Chat Now</button>        
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {%if user.is_authenticated %}
+                    <form class="comment" method="POST">
+                        {%csrf_token%}
+                        <p>{{q.id}}</p>
+                        <input hidden value={{q.id}} name="post">
+                        <input hidden value={{user.username}} name="username">
+                        <input placeholder="Answer" name="answer">
+                        <button type="submit" >Post</button>
+                    </form>
+                {%endif%}
+        </div>
     {% endfor %}
     <script src="{% static 'reconnecting-websocket.js' %}"></script>
     <script>
@@ -28,7 +34,9 @@
             window.location.href = "/chat/"+roomName+'?q='+roomID
             console.log(roomName)
         }
+        function reply(){
 
+        }
     </script>
-</body>
+ {% endblock %}
 </html>

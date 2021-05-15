@@ -20,8 +20,6 @@ class Answer(models.Model):
     created_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 
-
-
 class Room(models.Model):
     answer = models.ForeignKey(Answer,on_delete=models.CASCADE,null=True)
     title=models.CharField(max_length=255)
