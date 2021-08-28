@@ -25,7 +25,7 @@
     background-color:black;
     padding: 5px;    
     color: white;
-    box-shadow: 2px 2px 5px rgb(109, 108, 108);
+    /* box-shadow: 2px 2px 5px rgb(109, 108, 108); */
 }
 .reply{
     width: 70%;

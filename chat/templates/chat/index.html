@@ -10,8 +10,10 @@
                 {% for a in answers %}
                     {% if a.post.id == q.id %}
                     <div class="answercard" >
-                        <h4><img src="{% static 'chat/img/user.png' %}" style="float:left;height: 30px;width: 30px;">
-                            <span style="float:left;color:rgb(75, 101, 212)">{{a.created_by}}</span><br>{{a.answer}}</h4>
+                        <img src="{% static 'chat/img/user.png' %}" style="height: 30px;width: 30px;border-radius:20px; margin-right: 10px;float: left;">
+                        <div class="ansin" >
+                            <span style="color:rgb(75, 101, 212);font-size: 9px;">{{a.created_by}}</span>
+                            <p style="font-size: 10px;">{{a.answer}}</p></div>
                         <button  style="color: white;background-color: black;"  onclick="roombuild('{{a.id}}')">Discuss</button>        
                     </div>
                     {% endif %}
