@@ -1,6 +1,6 @@
 .whole{
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     font-family: Times New Roman;
 }
 .wholecard{
@@ -9,39 +9,38 @@
     margin-right:2.5%;
     margin-top:2.5%;
     margin-bottom:2.5%;
-    border: 4px black;
-    background-color: black;
+    background-color: white;
     padding: 5px;    
-    color: white;
-    box-shadow: 1px 1px 1px rgb(136, 134, 134);
+    color: black;
+    box-shadow: 1px 1px 1px 1px rgb(136, 134, 134); 
 }
 .answercard{
     width: 90%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
-    border: 4px;
-    background-color:black;
-    padding: 5px;    
-    color: white;
-    box-shadow: 2px 2px 5px rgb(109, 108, 108);
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    /* border: 4px black; */
+    background-color:white;
+    /* padding: 5px;     */
+    color: black;
+    /* box-shadow: 2px 2px 5px rgb(109, 108, 108); */
 }
 .reply{
     width: 70%;
     margin-left:2.5%;
     margin-right:2.5%;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
+    margin-top:0.5%;
+    margin-bottom:0.5%;
     border: 4px;
-    background-color: black;
-    padding: 5px;    
-    color: white;
+    background-color: white;
+    /* padding: 5px;     */
+    color: black;
     box-shadow: 2px 2px 5px rgb(109, 108, 108)
 }
 .post{
     width: 10%;
-    background-color: black;
+    background-color:#007bff;
     color: white;
-    box-shadow: 2px 2px 5px rgb(109, 108, 108)
+    box-shadow: 2px 2px 5px rgb(255, 255, 255) 
 }
