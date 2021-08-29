@@ -2,15 +2,14 @@
 {% extends 'chat/base.html'%}
 {%load static%}
 {% block maincontent %}
-    <h1>Questions</h1>
     {% for q in posts %}
         <div class="wholecard" >
             <h3>{{q.question}}</h3>
-            <i style="font-size: 10px;">Asked by {{q.created_by}}</i>
+            <i style="font-size: 10px;margin-left: 20px;">Asked by {{q.created_by}}</i>
                 {% for a in answers %}
                     {% if a.post.id == q.id %}
                     <div class="answercard" >
-                        <img src="{% static 'chat/img/user.png' %}" style="height: 30px;width: 30px;border-radius:20px; margin-right: 10px;float: left;">
+                        <img src="{% static 'chat/img/user.png' %}" style="height: 28px;width: 28px;border-radius:30px; margin-right: 15px;float: left;">
                         <div class="ansin" >
                             <span style="color:rgb(75, 101, 212);font-size: 9px;">{{a.created_by}}</span>
                             <p style="font-size: 10px;">{{a.answer}}</p></div>
