@@ -1,29 +1,36 @@
 .whole{
+    width: 100%;
+    height: 100%;
     color: white;
-    background-color: black;
+    background-color: rgba(1, 1, 8, 0.637);
     font-family: Times New Roman;
+}
+.askqn{
+    width: 90%;
+    margin:2.5% 2.5% 2.5% 2.5%;
+    border: 4px rgba(247, 247, 247, 0.932);
+    background-color: rgb(0, 0, 0);
+    padding: 5px;
+     
+}
+.newquestion{
+    width: 60%;
 }
 .wholecard{
     width: 90%;
-    margin-left:2.5%;
-    margin-right:2.5%;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
-    border: 4px black;
-    background-color: black;
+    margin:2.5% 2.5% 2.5% 2.5%;
+    border: 4px rgba(1, 1, 8, 0.932);
+    background-color: rgb(0, 0, 0);
     padding: 5px;    
     color: white;
-    box-shadow: 1px 1px 1px rgb(136, 134, 134);
+    box-shadow: 1px 1px 1px rgb(255, 255, 255);
 }
 .answercard{
     width: 90%;
-    margin-left:2.5%;
-    margin-right:2.5%;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
+    margin:2.5%;
     border: 4px;
-    background-color:black;
-    padding: 5px;    
+    background-color:rgba(1, 1, 8, 0.932);
+    padding: 5px white;    
     color: white;
     /* box-shadow: 2px 2px 5px rgb(109, 108, 108); */
 }
@@ -34,14 +41,15 @@
     margin-top:2.5%;
     margin-bottom:2.5%;
     border: 4px;
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0.856);
     padding: 5px;    
     color: white;
-    box-shadow: 2px 2px 5px rgb(109, 108, 108)
+    /* box-shadow: 2px 2px 5px rgb(255, 255, 255) */
 }
 .post{
     width: 10%;
-    background-color: black;
+    background-color: rgba(47, 62, 199, 0.856);
     color: white;
-    box-shadow: 2px 2px 5px rgb(109, 108, 108)
+    border: none;
+    /* box-shadow: 2px 2px 4px rgb(255, 255, 255); */
 }
