@@ -14,14 +14,20 @@ User = get_user_model()
 # @login_required
 def index(request):
     if request.method=="POST":
-        post=request.POST.get('post')
-        username=request.POST.get('username')
-        answer=request.POST.get('answer')
-        p=Post.objects.get(id=post)
-        u=User.objects.get(username=username)
-        print(p)
-        ins=Answer(post=p,answer=answer,created_by=u)
-        ins.save()
+        try:
+            nq = request.POST.get('newqn')
+            print(request.user.username)
+            ins = Post(question = nq, created_by = request.user)
+            ins.save()
+        except Exception:
+            post=request.POST.get('post')
+            username=request.POST.get('username')
+            answer=request.POST.get('answer')
+            p=Post.objects.get(id=post)
+            u=User.objects.get(username=username)
+
+            ins=Answer(post=p,answer=answer,created_by=u)
+            ins.save()
         return redirect('chat:index')
     else:
         posts = Post.objects.filter()
