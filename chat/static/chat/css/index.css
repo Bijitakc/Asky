@@ -53,3 +53,88 @@
     border: none;
     /* box-shadow: 2px 2px 4px rgb(255, 255, 255); */
 }
+
+/* chat */
+
+.open-button {
+    height:30px;
+    cursor: pointer;
+    position: fixed;
+    font-size: 15px;
+    margin:2px rgb(255, 255, 255);
+    bottom: 23px;
+    right: 28px;
+    width: 130px;
+    
+}
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
+  height: 300px;
+  background-color: white;
+}
+/* Add styles to the form container */
+.form-container {
+    max-width: 250px;
+    padding: 5px;
+    background-color: white;
+}
+#maintitle{
+  background-color: #abc;
+  color: white;
+  text-align: center;
+  font-size:20px;
+  width: 250px;
+  height:35px; 
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#closed{
+  height: 10px;
+  float:right;
+  width: 30px;
+  outline: none;
+  background-color: #abc;
+  border: none;
+  border-top-right-radius: 15px;
+}
+
+.chat__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+/* chat inside */
+.roommembers{
+    padding: 20px;
+}
+.dot {
+    float:left;
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-top: 7px;
+}
+.rname{
+    text-transform: uppercase;
+    font-size:15px; 
+}
+.oname{
+    text-transform: uppercase;
+    color: green;
+    font-size:15px; 
+}

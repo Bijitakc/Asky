@@ -8,7 +8,7 @@ urlpatterns = [
     path('',views.index,name="index"),
     # re_path(r'^(?P<room_name>[^/]+)/$',views.room, name='room'),
     path('<str:room_name>',views.room,name="room"),
-    path('chatt/',views.chatt,name="chatt"),
+    path('chatroomz/', views.chatroomz, name = "chatroomz")
 ]
 
 if settings.DEBUG: # new

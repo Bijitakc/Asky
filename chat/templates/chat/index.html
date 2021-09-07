@@ -23,7 +23,7 @@
                         <div class="ansin" >
                             <span style="color:rgb(75, 101, 212);font-size: 9px;">{{a.created_by}}</span>
                             <p style="font-size: 10px;">{{a.answer}}</p></div>
-                        <button  style="color: white;background-color: rgba(15, 14, 14, 0.856);"  onclick="roombuild('{{a.id}}')">Discuss</button>        
+                        <!-- <button  style="color: white;background-color: rgba(15, 14, 14, 0.856);"  onclick="roombuild('{{a.id}}')">Discuss</button>         -->
                     </div>
                     {% endif %}
                 
@@ -39,9 +39,84 @@
                 {%endif%}
         </div>
     {% endfor %}
+    {% if user.is_authenticated %}
+        <button  class="open-button" onclick="opendiv()">
+            Chat
+        </button>
+        
+        <div class="chat-popup" id="myDiv">
+        <div id="maintitle"> Chat
+            <button id="closed" onclick="closeDiv()">
+            <i style="font-size:15px; color:white;" class="fa">&#xf00d;</i>
+            </button>
+        </div>
+        <div class="form-container">
+            <div class="chat">
+                <div class="chat__wrapper">
+                    <div class="roommembers">
+                        {%if onusers %}
+                        {%for onuser in onusers%}
+                        <span class="dot"></span>
+                        <form>
+                        <a onclick="roombuild('{{onuser.id}}','{{request.user.id}}')"> <ul class="oname"> {{onuser}}</ul> 
+                        </form>
+                        {% endfor %}
+                        {%endif%}
+                    </div>
+                </div>
+            </div>        
+        </div>  
+        </div>
+      {%endif%}
+      <script>
+        //for pop up start
+        function opendiv() {
+          document.getElementById("myDiv").style.display = "block";
+        }
+    
+        function closeDiv() {
+          document.getElementById("myDiv").style.display = "none";
+        }
+        
+        //for pop up end
+        //for websocket and input start
+        // const chatSocket = new WebSocket(
+        // 'ws://'
+        // + window.location.host
+        // + '/ws/chat/index/'
+        // + '/'
+        // );
+        // chatSocket.onmessage = function (text) {
+        // // comDecode the JSON
+        // res=text.data;
+        // jQuery('.chat__wrapper').append('<div class="chat__message"><div>' + res +'\n'+ '</div></div>');
+    
+        // }
+    
+        // chatSocket.onclose = function(e) {
+        // console.error('Chat socket closed unexpectedly');
+        // };
+    
+        // document.querySelector('#chat-message-input').focus();
+        // document.querySelector('#chat-message-input').onkeyup = function(e) {
+        // if (e.keyCode === 13) {  // enter, return
+        //     document.querySelector('#chat-message-submit').click();              
+        // }
+        // };
+        //comentuser input and message append
+        // document.querySelector('#chat-message-submit').onclick = function(e) {
+        // const messageInputDom = document.querySelector('#chat-message-input');
+        // const message = messageInputDom.value ;
+    
+        // jQuery('.chat__wrapper').append('<div class="chat__message chat__message-own"><div>' + message +'\n'+ '</div></div>');
+    
+        // chatSocket.send(message);
+        // messageInputDom.value = '';
+        // };
+        </script>
     <script src="{% static 'reconnecting-websocket.js' %}"></script>
     <script>
-        function roombuild(roomID){
+        function roombuild(currentUserId, currentUserId){
            var roomName=(Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
             window.location.href = '/chat/'+roomName+'?q='+roomID;
             console.log(roomName)

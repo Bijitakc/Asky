@@ -7,6 +7,7 @@ import json
 import online_users.models
 from datetime import timedelta
 from itertools import chain
+from user.models import CustomUser
 
 User = get_user_model()
 
@@ -35,18 +36,29 @@ def index(request):
         usernames=User.objects.only("username")
         rooms=Room.objects.order_by("created_at")
         available_rooms = Room.objects.filter()
+        allusers=CustomUser.objects.all()
+
+        #for online user list
+        current = request.user
+        on_users=[]
+        user_status = online_users.models.OnlineUserActivity.objects.all()
+        for user in user_status:
+            a=user.user
+            if a in allusers and a!= current:
+                on_users.append(a) 
+        print(on_users)
         return render(request,'chat/index.html',{"rooms":rooms,
-            "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms})
+            "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms, "onusers" : on_users})
 
 # @login_required
 def room(request,room_name):
     try:
         room=Room.objects.filter(title=room_name)[0]
-        if not ( request.user in room.access_users.all() or request.user in User.objects.filter(groups__name='SMES')):
-            return HttpResponse('You don\'t have permissions to access this room')
+        # if not ( request.user in room.access_users.all() or request.user in User.objects.filter(groups__name='SMES')):
+        #     return HttpResponse('You don\'t have permissions to access this room')
         
         id=room.id
-        allusers=room.access_users.all()
+        allusers=CustomUser.objects.all()
 
         #for online user list
         on_users=[]
@@ -72,7 +84,7 @@ def room(request,room_name):
         ins.save()
         room=Room.objects.filter(title=room_name)[0]
         id=room.id
-        allusers=room.access_users.all()
+        allusers=CustomUser.objects.all()
 
           #for online user list
         on_users=[]
@@ -91,5 +103,6 @@ def room(request,room_name):
         'id':id,'on_users':on_users,'allusers':allusers
     })
 
-def chatt(request):
-    return render(request,'chat/chatt.html')
+
+def chatroomz(request):
+    return render('chat/chatroomz.html')
