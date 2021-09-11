@@ -21,10 +21,11 @@ class Answer(models.Model):
 
 
 class Room(models.Model):
-    answer = models.ForeignKey(Answer,on_delete=models.CASCADE,null=True)
+    # answer = models.ForeignKey(Answer,on_delete=models.CASCADE,null=True)
     title=models.CharField(max_length=255)
+    members = models.ManyToManyField(User,related_name="members")
     created_at=models.DateTimeField(auto_now_add=True)
-    created_by=models.ForeignKey(User,on_delete=models.CASCADE)
+    # created_by=models.ForeignKey(User,on_delete=models.CASCADE)
     # access_users = models.ManyToManyField(User,related_name="access_users")
     #online_users=models.OneToOneField(User,on_delete=models.CASCADE, related_name='online',null=True) 
     #is_online=models.BooleanField(default=False)
@@ -32,9 +33,6 @@ class Room(models.Model):
     class Meta:
         verbose_name = 'Room'
         verbose_name_plural = "Rooms"
-
-    def __str__(self):
-        return self.title
 
 class Message(models.Model):
     room=models.ForeignKey(Room,on_delete=models.CASCADE)

@@ -51,13 +51,13 @@ def index(request):
             "usernames":usernames,"posts":posts,"answers":answer,"available_rooms":available_rooms, "onusers" : on_users})
 
 # @login_required
-def room(request,room_name):
+def room(request, roomName, onuser):
+    r_name = roomName
+    o_id = onuser
     try:
-        room=Room.objects.filter(title=room_name)[0]
-        # if not ( request.user in room.access_users.all() or request.user in User.objects.filter(groups__name='SMES')):
-        #     return HttpResponse('You don\'t have permissions to access this room')
-        
+        room=Room.objects.filter(members = onuser ).filter(members = request.user)[0]
         id=room.id
+        rname = roomName
         allusers=CustomUser.objects.all()
 
         #for online user list
@@ -70,19 +70,12 @@ def room(request,room_name):
         
         pass
     except IndexError:
-        q = request.GET.get('q',None)
-        answer = get_object_or_404(Answer,id=q)
-        if Room.objects.filter(answer=answer).exists():
-            room = Room.objects.get(answer=answer)
-            return redirect(f"/chat/{room.title}")
         current_user = request.user
-        ins=Room.objects.create(title=room_name,created_by=current_user,answer=answer)
-        list_of_users = [answer.created_by,answer.post.created_by]
-        for us in User.objects.filter(groups__name='SMES'):
-            list_of_users.append(us)
-        ins.access_users.set(list_of_users)
+        memberlist = [onuser, request.user]
+        ins=Room.objects.create()
+        ins.members.set(memberlist)
         ins.save()
-        room=Room.objects.filter(title=room_name)[0]
+        room=Room.objects.filter(id=ins.id)[0]
         id=room.id
         allusers=CustomUser.objects.all()
 
@@ -94,15 +87,10 @@ def room(request,room_name):
             if a in allusers:
                 on_users.append(a)
         pass
-    ans=Answer.objects.get(id=room.answer.id)
     return render(request,'chat/chatroom.html',{
-        'answer':ans.answer,
-        'post':ans.post,
-        'room_name':room_name,
+        'room_name' : r_name,
+        "o_id" : o_id,
         'username':mark_safe(json.dumps(request.user.username)),
-        'id':id,'on_users':on_users,'allusers':allusers
+        'id':id,'on_users':on_users,
+        'allusers':allusers
     })
-
-
-def chatroomz(request):
-    return render('chat/chatroomz.html')

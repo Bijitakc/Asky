@@ -7,8 +7,7 @@ from . import views
 urlpatterns = [
     path('',views.index,name="index"),
     # re_path(r'^(?P<room_name>[^/]+)/$',views.room, name='room'),
-    path('<str:room_name>',views.room,name="room"),
-    path('chatroomz/', views.chatroomz, name = "chatroomz")
+    path('<str:roomName>/<int:onuser>',views.room,name="room")
 ]
 
 if settings.DEBUG: # new
