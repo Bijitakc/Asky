@@ -138,3 +138,21 @@
     color: green;
     font-size:15px; 
 }
+
+.options{
+    width: 90px;
+    padding: 7px;
+    display: none;
+    background-color: rgb(218, 218, 218);
+    color:black;
+    float: right;
+}
+
+.aoptions{
+    width: 90px;
+    padding: 7px;
+    display: none;
+    background-color: rgb(218, 218, 218);
+    color:black;
+    float: right;
+}

@@ -7,7 +7,9 @@ from . import views
 urlpatterns = [
     path('',views.index,name="index"),
     # re_path(r'^(?P<room_name>[^/]+)/$',views.room, name='room'),
-    path('<str:roomName>/<int:onuser>',views.room,name="room")
+    # path('<str:roomName>/<int:onuser>',views.room,name="room"),
+    path('delpost/<str:postid>', views.delpost, name="delpost"),
+    path('delans/<int:ansid>', views.delans, name="delans")
 ]
 
 if settings.DEBUG: # new
