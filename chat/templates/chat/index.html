@@ -30,11 +30,11 @@
                     <div class="answercard" >
                         {% if request.user == a.created_by %}
                             <button onclick="aoptionsShow({{a.id}})" style="float: right;background-color:black;margin-right:10px ; border: none;">
-                                <i class="fa fa-ellipsis-v" aria-hidden="true"   style="color: white;"></i>
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"   style="color: white; margin-left: 3px;"></i>
                             </button>
                             <div id="{{a.id}}" class="aoptions">
                                 <ui>
-                                    <a href="{% url 'chat:delans' a.id %}">Delete</a> <br>
+                                    <a href="{% url 'chat:delans' a.id q.id %}">Delete</a> <br>
                                     <a>Edit</a>
                                 </ui>
                             </div>
@@ -46,6 +46,7 @@
                         <!-- <button  style="color: white;background-color: rgba(15, 14, 14, 0.856);"  onclick="roombuild('{{a.id}}')">Discuss</button>         -->
                     </div>
                     {% endif %}
+                    
                 
                 {% endfor %}
                 {%if user.is_authenticated %}

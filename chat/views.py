@@ -97,13 +97,12 @@ def room(request, roomName, onuser):
 
 
 def delpost(request, postid):
-    print(postid)
-    ins = Post.objects.get(id = id)
+    ins = Post.objects.get(id = postid)
     ins.delete()
     return redirect('chat:index')
 
-def delans(request, ansid):
-    print(ansid)
-    ins = Answer.objects.get(id = id)
+def delans(request, ansid, qid):
+    print(qid)
+    ins = Answer.objects.get(id = ansid)
     ins.delete()
     return redirect('chat:index')
