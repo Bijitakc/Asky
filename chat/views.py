@@ -8,6 +8,8 @@ import online_users.models
 from datetime import timedelta
 from itertools import chain
 from user.models import CustomUser
+from django.utils import timezone
+import datetime
 
 User = get_user_model()
 
@@ -44,7 +46,9 @@ def index(request):
         user_status = online_users.models.OnlineUserActivity.objects.all()
         for user in user_status:
             a=user.user
-            if a in allusers and a!= current:
+            fifteen_minutes = datetime.timedelta(minutes=15)
+            t = timezone.now() - fifteen_minutes
+            if user.last_activity>= t and a!= current:
                 on_users.append(a) 
         print(on_users)
         return render(request,'chat/index.html',{"rooms":rooms,
@@ -54,6 +58,7 @@ def index(request):
 def room(request, roomName, onuser):
     r_name = roomName
     o_id = onuser
+    allchatrooms = Room.objects.filter(members = request.user)
     try:
         room=Room.objects.filter(members = onuser ).filter(members = request.user)[0]
         id=room.id
@@ -92,7 +97,8 @@ def room(request, roomName, onuser):
         "o_id" : o_id,
         'username':mark_safe(json.dumps(request.user.username)),
         'id':id,'on_users':on_users,
-        'allusers':allusers
+        'allusers':allusers,
+        "allchatrooms" : allchatrooms
     })
 
 

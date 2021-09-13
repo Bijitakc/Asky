@@ -80,6 +80,8 @@
                         <span class="dot"></span>
                         <a  onclick="roombuild('{{onuser.id}}')"> <ul class="oname"> {{onuser}}</ul> 
                         {% endfor %}
+                        {%else%}
+                        <p style="color: black;">Noone else in currently online</p>
                         {%endif%}
                     </div>
                 </div>
