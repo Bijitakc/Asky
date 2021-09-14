@@ -19,34 +19,38 @@
   <!-- <nav class="navbar navbar-primary bg-primary">
     <span class="navbar-brand mb-0 h1">Asky</span>
   </nav> -->
-  <nav class="navbar navbar-expand-lg navbar navbar navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Asky</a>
+  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary" style="background-color: #e3f2fd;">
+    <!-- <a class="navbar-brand" href="#" style="color: white;">Asky</a> -->
+    <img src="{% static 'chat/img/logo.png' %}" style="height: 45px;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <!-- <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li> -->
       </ul>
+      <div style="color: white;">
+        <i class="fa fa-bell" aria-hidden="true" style="float: right; font-size: 15px; margin-right: 30px; margin-top:10px;color: white;"></i>
+        <p>Notifications</p> 
+      </div>
       <div style="float: right;">
         {%if request.user.is_authenticated %}
         <a href="{% url 'user:logoutpage' %}">
-          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px;padding: 5px;">
+          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px; margin-top:10pxpadding: 5px;">
             Logout
           </button>
         </a>
   
         {%else%}
         <a href="{% url 'user:loginpage' %}">
-          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px ">
+          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px;margin-top:10px ">
             Login
           </button>
         </a>
         <a href="{% url 'user:signup' %}">
-          <button type="button" class="btn btn-primary" style="float: right;; ">
+          <button type="button" class="btn btn-primary" style="float: right;margin-top:10px ">
             Register
           </button>
         </a>
@@ -59,6 +63,17 @@
     {% block maincontent %}
     {% endblock %}
   </div>
+  <!-- Footer -->
+ <footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="color: white;">© 2021 Copyright:
+    <a href="https://mdbootstrap.com/">Bijita Kc</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

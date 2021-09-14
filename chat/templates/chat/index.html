@@ -4,13 +4,15 @@
 {% block maincontent %}
 {% if user.is_authenticated %}
 <div class ="askqn">
+    <p style="font-size: 25px; ">Ask a question</p>
     <img src="{% static 'chat/img/user.png' %}" style="height: 28px;width: 28px;border-radius:30px; margin-right: 15px;float: left;">
     <form method = "POST">
         {%csrf_token%}
-        <input class="newquestion" placeholder="Ask a new question"  name="newqn">
+        <input class="newquestion" placeholder=""  name="newqn">
         <button class ="post" type="submit">Ask</button>
     </form>
 </div>
+<hr>
 {%endif%}
     {% for q in posts %}
         <div class="wholecard" >
@@ -45,9 +47,7 @@
                             <p style="font-size: 10px;">{{a.answer}}</p></div>
                         <!-- <button  style="color: white;background-color: rgba(15, 14, 14, 0.856);"  onclick="roombuild('{{a.id}}')">Discuss</button>         -->
                     </div>
-                    {% endif %}
-                    
-                
+                    {% endif %}               
                 {% endfor %}
                 {%if user.is_authenticated %}
                 <form  method="POST">
@@ -59,7 +59,8 @@
                 </form>
                 {%endif%}
         </div>
-    {% endfor %}
+        <hr>{% endfor %}
+    
     {% if user.is_authenticated %}
         <button  class="open-button" onclick="opendiv()">
             Chat

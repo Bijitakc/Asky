@@ -5,29 +5,34 @@
     background-color: rgba(1, 1, 8, 0.637);
     font-family: Times New Roman;
 }
+.hr{
+    color: white;
+    background-color: white;
+}
 .askqn{
     width: 90%;
     margin:2.5% 2.5% 2.5% 2.5%;
     border: 4px rgba(247, 247, 247, 0.932);
     background-color: rgb(0, 0, 0);
     padding: 5px;
+    padding-left: 10%; 
      
 }
 .newquestion{
     width: 60%;
 }
 .wholecard{
-    width: 90%;
+    width: 70%;
     margin:2.5% 2.5% 2.5% 2.5%;
-    border: 4px rgba(1, 1, 8, 0.932);
+    border: 4px rgba(255, 255, 255, 0.932);
     background-color: rgb(0, 0, 0);
     padding-right: 20px;
-    padding-left: 20px;    
+    padding-left: 10%;    
     color: white;
-    box-shadow: 1px 1px 1px rgb(255, 255, 255);
+    /* box-shadow: 0px 1px 0px rgb(255, 255, 255); */
 }
 .answercard{
-    width: 90%;
+    width: 70%;
     margin:2.5%;
     border: 4px;
     margin-bottom: 10px;
@@ -37,7 +42,7 @@
     /* box-shadow: 2px 2px 5px rgb(109, 108, 108); */
 }
 .reply{
-    width: 40%;
+    width: 50%;
     margin-left:2.5%;
     margin-right:2.5%;
     margin-top:2.5%;
