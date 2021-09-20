@@ -6,13 +6,16 @@
 <div class ="askqn">
     <p style="font-size: 25px; ">Ask a question</p>
     <img src="{% static 'chat/img/user.png' %}" style="height: 28px;width: 28px;border-radius:30px; margin-right: 15px;float: left;">
-    <form method = "POST">
+    <form method = "POST" >
         {%csrf_token%}
-        <input class="newquestion" placeholder=""  name="newqn">
+        <textarea class="newquestion"  required  placeholder="" id = "newqn" name="newqn"></textarea>
+        <script type="text/javascript" >
+            CKEDITOR.replace('newqn');
+          </script>
         <button class ="post" type="submit">Ask</button>
     </form>
 </div>
-<hr>
+<hr >
 {%endif%}
     {% for q in posts %}
         <div class="wholecard" >
@@ -25,7 +28,7 @@
                     <a>Edit</a>
                 </div>
             {%endif%}
-            <h3>{{q.question}}</h3>
+            <h3>{{q.question|safe}}</h3>          
             <i style="font-size: 10px;margin-left: 20px;">Asked by {{q.created_by}}</i>
                 {% for a in answers %}
                     {% if a.post.id == q.id %}
@@ -91,6 +94,8 @@
         </div>
       {%endif%}
       <script>
+        
+        CKEDITOR.replace( 'fieldname' );
         function optionsShow(id){
             console.log(id)
             var x = document.getElementById(id);
@@ -121,6 +126,7 @@
             window.location.href = '/chat/'+roomName+'/'+onUserid;
             console.log(roomName)
         }
+
     </script>
     <script src="{% static 'reconnecting-websocket.js' %}"></script>
  {% endblock %}
