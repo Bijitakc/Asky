@@ -166,3 +166,25 @@
     color:black;
     float: right;
 }
+
+.topicondiv{
+    color: white;
+    position: relative;
+}
+
+.topicon{
+    float: right; 
+    font-size: 15px; 
+    margin-right: 30px;
+    margin-top:10px;
+    color: white;
+}
+.txt{
+    background-color:red;
+    font-size:xx-small;
+    position: absolute;
+    padding:2px;
+    top: 5px;
+    left: 5px;
+    border-radius: 25px;
+}

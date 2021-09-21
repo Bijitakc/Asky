@@ -9,8 +9,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
 
 	// The toolbar groups arrangement, optimized for a single toolbar row.
-	config.width = '60%' ;
-	config.height = 100;    // CSS unit.
+	config.width = '80%' ;
+	config.height = 80;    // CSS unit.
 
 	config.toolbarGroups = [
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },

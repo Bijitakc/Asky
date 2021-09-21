@@ -31,9 +31,16 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li> -->
       </ul>
-      <div style="color: white;">
-        <i class="fa fa-bell" aria-hidden="true" style="float: right; font-size: 15px; margin-right: 30px; margin-top:10px;color: white;"></i>
-        <p>Notifications</p> 
+      <div class="topicondiv">
+        <i class="fa fa-envelope" aria-hidden="true" class="topicon" ></i>
+        <div class="txt">10</div>
+        <!-- <p>Message</p>  -->
+      </div>
+      
+      <div class="topicondiv">
+        <i class="fa fa-bell" aria-hidden="true" class="topicon"></i>
+        <div class="txt">10</div>
+        <!-- <p>Notifications</p>  -->
       </div>
       <div style="float: right;">
         {%if request.user.is_authenticated %}
