@@ -48,12 +48,16 @@ class Message(models.Model):
     def __str__(self):
         return self.author.username
 
-
-
-
     #using this we can load last ten messages from the message model
     def last_10_messages(room):
         return Message.objects.filter(room=room).order_by('timestamp').all()[:10]
 
 
 
+class RecentMessage(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(auto_now=True)
+
+    class Meta :
+        verbose_name = 'RecentMessage'
+        verbose_name_plural = "RecentMessages"
