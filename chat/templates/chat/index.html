@@ -81,8 +81,10 @@
                     <div class="roommembers">
                         {%if onusers %}
                         {%for onuser in onusers%}
-                        <span class="dot"></span>
+                        <div style="cursor: pointer;">
+                            <span class="dot"></span>
                         <a  onclick="roombuild('{{onuser.id}}')"> <ul class="oname"> {{onuser}}</ul> 
+                        </div>
                         {% endfor %}
                         {%else%}
                         <p style="color: black;">Noone else in currently online</p>
