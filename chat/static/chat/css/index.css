@@ -1,4 +1,4 @@
-.whole{
+/* .whole{
     position: relative;
     width: 100%;
     height: 100%;
@@ -33,9 +33,8 @@
     padding-right: 20px;
     padding-left: 10%;    
     color: white;
-    /* box-shadow: 0px 1px 0px rgb(255, 255, 255); */
-}
-.answercard{
+} */
+/* .answercard{
     width: 70%;
     margin:2.5%;
     border: 4px;
@@ -43,7 +42,6 @@
     background-color:rgba(1, 1, 8, 0.932);
     padding: 5px white;    
     color: white;
-    /* box-shadow: 2px 2px 5px rgb(109, 108, 108); */
 }
 .reply{
     width: 50%;
@@ -55,19 +53,16 @@
     background-color: rgba(255, 255, 255, 0.856);
     padding: 5px;    
     color: white;
-    /* box-shadow: 2px 2px 5px rgb(255, 255, 255) */
-}
+} 
 .post{
     width: 10%;
     background-color: rgba(47, 62, 199, 0.856);
     color: white;
     border: none;
-    /* box-shadow: 2px 2px 4px rgb(255, 255, 255); */
-}
+} */
 
 /* chat */
-
-.open-button {
+/* .open-button {
     height:30px;
     cursor: pointer;
     position: fixed;
@@ -77,9 +72,9 @@
     right: 28px;
     width: 130px;
     
-}
+} */
 /* The popup chat - hidden by default */
-.chat-popup {
+/* .chat-popup {
   display: none;
   position: fixed;
   bottom: 0;
@@ -87,9 +82,9 @@
   z-index: 9;
   height: 300px;
   background-color: white;
-}
+} */
 /* Add styles to the form container */
-.form-container {
+/* .form-container {
     max-width: 250px;
     padding: 5px;
     background-color: white;
@@ -126,10 +121,10 @@
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-}
+} */
 
 /* chat inside */
-.roommembers{
+/* .roommembers{
     padding: 20px;
 }
 .dot {
@@ -212,5 +207,18 @@
     top:0px;
     left:200px;
     display: none;
+
+} */
+
+
+/* New */
+
+.nav-menu{
+    width: 100%;
+    position: fixed;
+    background-color: antiquewhite;
+}
+
+.nav-menu li{
 
 }

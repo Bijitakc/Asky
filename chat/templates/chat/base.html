@@ -14,76 +14,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="{% static 'chat/ckeditor/ckeditor.js' %}"></script>
 </head>
-<body style="background-color: rgb(1, 1, 8); height: 100%;">
-    <!-- navbar -->
-  <!-- <nav class="navbar navbar-primary bg-primary">
-    <span class="navbar-brand mb-0 h1">Asky</span>
-  </nav> -->
-  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary" style="background-color: #e3f2fd;">
-    <!-- <a class="navbar-brand" href="#" style="color: white;">Asky</a> -->
-    <img src="{% static 'chat/img/logo.png' %}" style="height: 45px;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li> -->
-      </ul>
-      {%if request.user.is_authenticated %}
-      <!-- <div class="topicondiv" >
-        <i class="fa fa-envelope" aria-hidden="true" class="topicon" style="font-size: 25px; margin-right: 15px;"></i>
-        <div class="txtm" >5</div>
-      </div>
-      
-      <div class="topicondiv" onclick="divtoggle()">
-        <i class="fa fa-bell" aria-hidden="true" class="topicon" style="font-size: 25px; margin-right: 15px;"></i>
-        <div class="txtn">5</div>
-      </div> -->
-      <div style="float: right;">
-        <a href="{% url 'user:logoutpage' %}">
-          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px; margin-top:10px;padding:5px;">
-            Logout
-          </button>
-        </a>
-  
-        {%else%}
-        <a href="{% url 'user:loginpage' %}">
-          <button type="button" class="btn btn-primary" style="float: right;margin-left:10px;margin-top:10px ">
-            Login
-          </button>
-        </a>
-        <a href="{% url 'user:signup' %}">
-          <button type="button" class="btn btn-primary" style="float: right;margin-top:10px ">
-            Register
-          </button>
-        </a>
-        {%endif%}
-      </div>
-    </div>
-  </nav>
-  
-  <div class="whole">
-    <div class="notifdiv" >
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
-    </div>
+<body>
+  <div class="nav-menu">
+    <ul>
+      <li class="active"><a href="">Home</a></li>
+      <li><a href="">Questions</a></li>
+      <li class="nav-dropdown">
+        <a href="" class="dropdown-toggler" >Login/Signup</a></li>
+    </ul>
+  </div>
     {% block maincontent %}
     {% endblock %}
   </div>
   <!-- Footer -->
- <footer class="page-footer font-small blue" style="bottom: 0px;">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3" style="color: white;">© 2021 Copyright:
-    <a href="https://mdbootstrap.com/">Bijita Kc</a>
+ <footer class="page-footer font-small blue" >
+  <div class="footer-copyright text-center py-3" >
+    © 2021 Copyright:Bijita Kc
   </div>
-  <!-- Copyright -->
-
 </footer>
 <!-- Footer -->
+
 <script>
   function divtoggle(){
     console.log("works")
@@ -94,7 +44,6 @@
     }else{
       x.style.display === "none";
     }
-
   }
 </script>
 
